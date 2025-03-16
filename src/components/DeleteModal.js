@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import { useDispatchBooks } from "../contexts/BookContext";
 import bookApi from "../api/book";
@@ -46,6 +47,14 @@ const DeleteModal = ({ book, toggleDeleteModal }) => {
       </div>
     </div>
   );
+};
+
+DeleteModal.propTypes = {
+  book: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
+  toggleDeleteModal: PropTypes.func.isRequired
 };
 
 export default DeleteModal;

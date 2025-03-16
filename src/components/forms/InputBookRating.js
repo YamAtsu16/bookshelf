@@ -1,6 +1,7 @@
 import Rating from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from 'prop-types';
 import { COLORS } from "../../utils/config";
 
 const InputBookRating = ({ rating, onChange }) => {
@@ -25,6 +26,11 @@ const InputBookRating = ({ rating, onChange }) => {
       </div>
     </>
   );
+};
+
+InputBookRating.propTypes = {
+  rating: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default InputBookRating;

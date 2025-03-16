@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const InputBookTitle = ({ register, errors }) => {
   return (
     <>
@@ -16,6 +18,15 @@ const InputBookTitle = ({ register, errors }) => {
       {errors.title && <div className="error-msg">{errors.title.message}</div>}
     </>
   );
+};
+
+InputBookTitle.propTypes = {
+  register: PropTypes.func.isRequired,
+  errors: PropTypes.shape({
+    title: PropTypes.shape({
+      message: PropTypes.string
+    })
+  })
 };
 
 export default InputBookTitle;

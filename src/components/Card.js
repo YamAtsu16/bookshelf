@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Rating from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from 'prop-types';
 
 import { COLORS, EXCERPT } from "../utils/config";
 
@@ -43,6 +44,16 @@ const Card = ({ book }) => {
       </div>
     </Link>
   );
+};
+
+Card.propTypes = {
+  book: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    comment: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired
+  }).isRequired
 };
 
 export default Card;

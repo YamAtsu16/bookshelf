@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const InputBookDesc = ({ register, errors }) => {
   return (
     <>
@@ -16,6 +18,15 @@ const InputBookDesc = ({ register, errors }) => {
       )}
     </>
   );
+};
+
+InputBookDesc.propTypes = {
+  register: PropTypes.func.isRequired,
+  errors: PropTypes.shape({
+    description: PropTypes.shape({
+      message: PropTypes.string
+    })
+  })
 };
 
 export default InputBookDesc;

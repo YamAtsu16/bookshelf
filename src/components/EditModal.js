@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 
 import { useDispatchBooks } from '../contexts/BookContext';
 import bookApi from '../api/book';
@@ -79,6 +80,18 @@ const EditModal = ({ book, setBook, toggleEditModal }) => {
       </form>
     </div>
   );
+};
+
+EditModal.propTypes = {
+  book: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    comment: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired
+  }).isRequired,
+  setBook: PropTypes.func.isRequired,
+  toggleEditModal: PropTypes.func.isRequired
 };
 
 export default EditModal;

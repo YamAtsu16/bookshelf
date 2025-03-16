@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const InputBookComment = ({ register, errors }) => {
   return (
     <>
@@ -14,6 +16,15 @@ const InputBookComment = ({ register, errors }) => {
       )}
     </>
   );
+};
+
+InputBookComment.propTypes = {
+  register: PropTypes.func.isRequired,
+  errors: PropTypes.shape({
+    comment: PropTypes.shape({
+      message: PropTypes.string
+    })
+  })
 };
 
 export default InputBookComment;
