@@ -2,11 +2,15 @@ import express from "express";
 import apiRoutes from "./routes/index.mjs"
 import "./config/db.mjs"
 import cors from "cors"
+import path from "path"
 import env from "dotenv";
 env.config();
 
 const app = express();
 const port = process.env.PORT || 8080;
+
+// ビルドされたReactコードをサーバーから取得する設定
+app.use(express.static("build"));
 
 app.use(express.json());
 
@@ -15,6 +19,12 @@ app.use(cors({ origin: "*"}));
 
 // API
 app.use("/api", apiRoutes);
+
+// "/api"のパスに一致しなかったパスのGETメソッドはすべてbuild/index.htmlが返却されるよう設定
+app.get("*", (req, res) => {
+  const indexHtml = path.resolve("build", "index.html")
+  res.sendFile(indexHtml);
+})
 
 // "/api"のパス不正の場合（12行目が呼び出されなかった場合）に呼ばれる
 app.use((req, res) =>{
